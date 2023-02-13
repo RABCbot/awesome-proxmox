@@ -1,8 +1,9 @@
 ## Create API user token
+...
 
 ## API user permission
 1. Click on datacenter node, permssion
-2. Select add `/storage` set role PVEDarastoreUser
+2. Select add `/storage` set role PVEDatastoreUser
 3. Select add `/` set role PVEVMAdmin
 
 ## Download container image
