@@ -1,7 +1,5 @@
-## Create API user token
-...
-
 ## API user permission
+To Terraform containers, you will need PVEDatastoreuser role
 1. Click on datacenter node, permssion
 2. Select add `/storage` set role PVEDatastoreUser
 3. Select add `/` set role PVEVMAdmin
@@ -60,3 +58,8 @@ config rule
 15. Click create dhcp server
 16. Click save
 17. Click save and apply
+
+## References
+https://yetanotheritblog.com/homelab/2021/10/12/networking-design.html
+https://virtualizeeverything.com/2022/05/23/setting-openwrt-in-proxmox-lxc/
+
