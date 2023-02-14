@@ -1,6 +1,6 @@
 ## API user permission
 To Terraform containers, you will need PVEDatastoreuser role
-1. Click on datacenter node, permssion
+1. Click on datacenter node, permission
 2. Select add `/storage` set role PVEDatastoreUser
 3. Select add `/` set role PVEVMAdmin
 
@@ -26,7 +26,7 @@ opkg install nano
 ```
 nano /etc/config/firewall
 ```
-2. Add to the botom of file:
+2. Add to the bottom of file:
 ```
 config rule                      
         option target 'ACCEPT'   
@@ -60,6 +60,7 @@ config rule
 17. Click save and apply
 
 ## References
-https://yetanotheritblog.com/homelab/2021/10/12/networking-design.html
-https://virtualizeeverything.com/2022/05/23/setting-openwrt-in-proxmox-lxc/
+https://yetanotheritblog.com/homelab/2021/10/12/networking-design.html</br>
+https://virtualizeeverything.com/2022/05/23/setting-openwrt-in-proxmox-lxc/</br>
+https://simplificandoredes.com/en/virtual-router-with-openwrt/</br>
 
