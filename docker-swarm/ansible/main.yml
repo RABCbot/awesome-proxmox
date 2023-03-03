@@ -1,0 +1,50 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update cache
+      apt:
+        update_cache: yes
+    - name: Install containerd
+      apt:
+        name: containerd
+        state: present
+    - name: Install docker
+      apt:
+        name: 
+          - docker.io
+          - docker-compose
+        state: present
+
+- hosts: manager
+  become: yes
+  tasks:
+    - name: Check manager status
+      shell: >
+        docker info | grep ' Swarm: ' | cut -d ' ' -f3
+      register: manager_status
+    - name: Debug manager status
+      debug:
+        msg: "{{ manager_status.stdout }}"
+    - name: Init manager if inactive
+      shell: >
+        docker swarm init
+      when: manager_status.stdout == "inactive"
+    - name: Retrieve manager token
+      shell: >
+        docker swarm join-token -q worker
+      register: worker_token
+
+- hosts: worker
+  become: yes
+  tasks:
+    - name: Check worker status
+      shell: >
+        docker info | grep ' Swarm: ' | cut -d ' ' -f3
+      register: worker_status
+    - name: Debug worker status
+      debug:
+        msg: "{{ worker_status.stdout }}"
+    - name: Join swarm if inactive
+      shell: >
+        docker swarm join --token {{ hostvars.manager.worker_token.stdout }} {{ hostvars.manager.ansible_default_ipv4.address }}
+      when: worker_status.stdout == "inactive"
