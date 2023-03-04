@@ -2,8 +2,8 @@ Install ansible
 ```
 apt install ansible
 ```
-Copy hosts and main.yml files
+Copy inventory and playbook.yml files
 Run playbook
 ```
-ansible-playbook -i hosts main.yml
+ansible-playbook -i inventory playbook.yml
 ```
